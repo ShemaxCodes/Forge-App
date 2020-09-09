@@ -1,4 +1,4 @@
-class Businesses < ActiveRecord::Base 
+class Business < ActiveRecord::Base 
     belongs_to :user 
     belongs_to :category
     has_many :comments
