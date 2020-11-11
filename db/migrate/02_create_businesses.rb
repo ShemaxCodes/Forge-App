@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateBusinesses < ActiveRecord::Migration[6.0]
     def change
       create_table :businesses do |t|
         t.string :title
