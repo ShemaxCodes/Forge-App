@@ -5,6 +5,7 @@ def index
 end 
 
 def new
+    @business = Business.new
 end 
 
 def create
@@ -24,6 +25,6 @@ def update
 end 
 
 def destroy
-    
+
 end
 end  
