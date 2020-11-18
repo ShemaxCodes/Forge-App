@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
     before_action :verified_user
     helper_method :current_user
       
+
+    def /
+        
+    end 
+
     private
       
     def verified_user
