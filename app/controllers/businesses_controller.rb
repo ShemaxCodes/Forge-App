@@ -5,7 +5,7 @@ def index
 end 
 
 def new
-    @business = Business.new
+    #@business = Business.new
 end 
 
 def create
