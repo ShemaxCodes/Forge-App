@@ -4,8 +4,10 @@
 <%= f.text_field :username %>
 <br>
 <%= f.label :password %>
-<%= f.text_field :password_digest %>
+<%= f.password_field :password_digest %>
 <br>
+<%=f.label :password_confirmation %>
+<%=f.password_field :password_confirmation%>
 
 <br>
 <%= f.submit %>
