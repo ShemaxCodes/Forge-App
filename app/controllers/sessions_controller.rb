@@ -3,20 +3,25 @@ class SessionsController < ApplicationController
 def login
     if @user == user_id
         redirect_to '/'
+    end
 end
 
 def create
-    session[:username] = params[:username]
-    redirect_to '/'
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+        log_in user
+        redirect_to user
+    else 
+        flash.now[:danger] = "Invalid email/password. Please try again."
+        render :new
+    end 
 end 
 
-def logout
-    session.clear
-    redirect_to "/login"
+def destroy
+    log_out if logged_in?
+    redirect_to '/'
 end
 
 
 
 end 
-
-#question about users controller and sessions 
