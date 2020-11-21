@@ -4,5 +4,10 @@ Rails.application.routes.draw do
   get "/businesses", to: "businesses#index" 
   get "/users", to: "users#new"
   get "/users/new", to: "users#show"
+  get "/login", to: "sessions#new" as: login_path
+  post "/login", to: "sessions#create" as: login_path
+  delete '/logout', to: "sessions#destroy" as: logout_path
+
+  
 
 end
