@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get "/businesses", to: "businesses#index" 
   get "/users", to: "users#new"
-  
+  get "/users/new", to: "users#show"
 
 end
