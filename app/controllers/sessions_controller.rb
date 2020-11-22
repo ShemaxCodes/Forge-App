@@ -1,9 +1,7 @@
 class SessionsController < ApplicationController 
    
-def login
-    if @user == user_id
-        redirect_to '/'
-    end
+def new
+    
 end
 
 def create

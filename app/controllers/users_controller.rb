@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user_id
+        flash[:success] = "Welcome to the Forge App!"
         redirect_to @user 
       else 
         render :new 
