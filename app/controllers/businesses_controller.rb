@@ -15,7 +15,9 @@ end
 
 def create
     user = current_user
-    if params
+    if params[:title].empty? || params[:description].empty?
+        redirect_to new_business_path
+    end
 end 
 
 
