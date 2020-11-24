@@ -5,11 +5,17 @@ def index
 end 
 
 def new
+    if logged_in?
+        render :new 
+    else 
+        redirect_to login_path
+    end 
     #@business = Business.new
 end 
 
 def create
-
+    user = current_user
+    if params
 end 
 
 
