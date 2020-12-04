@@ -22,7 +22,7 @@ end
 
 
 def show 
-
+    @business = Business.find_by_id(params[:id])
 end 
 
 def edit 

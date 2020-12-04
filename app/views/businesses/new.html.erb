@@ -6,14 +6,16 @@
 <%= b.text_field :title %>
 <br>
 
-title of business 
+<%= b.select :category, [ 'Apparel', 'Content Creators', 'Floral' ], :prompt => 'Select One' %>
 
 image of business (can be logo)
+<%= b.label :image %>
+<%= b.file_field :image %>
 
-<%= b.select :category, [ 'Apparel', 'Content Creators', 'Floral' ], :prompt => 'Select One' %>
+
 
 address of business - city and state
 
-description of busines???
+description of business???
 <%= b.label :description  %>
 <%= b.text_field :description %>
