@@ -8,13 +8,17 @@
 
 <%= b.select :category, [ 'Apparel', 'Content Creators', 'Floral' ], :prompt => 'Select One' %>
 
-image of business (can be logo)
+image of business 
 <%= b.label :image %>
 <%= b.file_field :image %>
+<br>
 
+<%= b.label :city %>
+<%= b.text_field :city %>
+<br>
 
-
-address of business - city and state
+<%= b.label :state %>
+<%= b.text_field :state %>
 
 description of business???
 <%= b.label :description  %>

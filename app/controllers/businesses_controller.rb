@@ -35,4 +35,9 @@ end
 def destroy
 
 end
+
+private
+def business_params
+    params.require(:business).permit(:title, :city, :state, :user_id, :category_id)
+end
 end  
