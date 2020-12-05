@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.
   root 'welcome#home'
+  get "/collection", to: "welcome#index", as: "collection_path"
+
   get "/businesses", to: "businesses#index", as: "business_path"
   get "/businesses/new", to: "businesses#new", as: "new_business_path"
   post "/businesses/new", to: "businesses#new"

@@ -22,7 +22,7 @@ def create
         redirect_to new_business_path
     end
     business = Business.build(business_params)
-    redirect_to business_path
+    redirect_to business_path #change to collection_path/add business_path to nav bar
 end 
 
 

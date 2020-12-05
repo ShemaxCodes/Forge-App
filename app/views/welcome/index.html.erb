@@ -1,0 +1,9 @@
+<h1>show page </h1>
+
+<%= @business.title %><br>
+
+<a href="/businesses/<%= @business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
+<form action="/businesses/<%= @business.id %>/delete" method ="POST">
+<input type="submit" value="Delete Business"><br><br>
+</form>
+<a href="/business"><input type="submit" value="Back to My Collection"></a>
