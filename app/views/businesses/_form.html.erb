@@ -1,0 +1,32 @@
+<!-- form for creating a new business -->
+<h1>Welcome, <%= current_user.username %> </h1>
+<br>
+<br>
+<%= form_for business_path_url do |b| %>
+
+<%= b.label :title, "Name of Business"  %>
+<%= b.text_field :title %>
+<br>
+<br>
+<%= b.select :category, [ 'Apparel', 'Content Creators', 'Floral', 'Tech'], :prompt => 'Select A Category' %>
+<br>
+<br> 
+<%= b.label :image %>
+<%= b.file_field :image %>
+<br>
+<br>
+<%= b.label :city %>
+<%= b.text_field :city %>
+<br>
+<br>
+<%= b.label :state %>
+<%= b.text_field :state %>
+<br>
+<br>
+<%= b.label :description  %>
+<%= b.text_field :description %>
+<br>
+<br>
+<%= b.submit "Forge Business" %>
+
+<% end %>
