@@ -1,2 +1,4 @@
 <h2> This is the show page </h2>
-<%= @user.username %>, <%= @user.email %>
+<h3> Welcome, <%= @user.username %>
+
+<%= link_to "Logout", logout_path, method: :post %>

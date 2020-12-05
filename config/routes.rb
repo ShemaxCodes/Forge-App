@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
 
-  #get "/users/:id", to: "users#show", as: 'users_path'
+  get "/users/:id", to: "users#show", as: 'users_path'
   get "/login", to: "sessions#new", as: 'login_path'
   post "/login", to: "sessions#create"
   delete '/logout', to: "sessions#destroy", as: 'logout_path'

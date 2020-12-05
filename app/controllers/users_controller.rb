@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-    #skip_before_action :verified_user, only: [:new, :create]
+    
 
+  #controller for signing up users
 
   def new 
     @user = User.new 
@@ -11,20 +12,27 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user_id
         #flash[:success] = "Welcome to the Forge App!"
-        redirect_to business_path
+        redirect_to user_path(@user)
       else 
         render :new 
       end 
     end 
 
   def show
-    @user = User.find(params[:user_id])
+    if logged_in?
+      @user = User.find(params[:user_id])
+      @user.business.build
+    else 
+      redirect_to "/"
+    
+      
+    end
   end 
 
   private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username, :email, :password_digest, :password_confirmation)
+        params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
 end
 

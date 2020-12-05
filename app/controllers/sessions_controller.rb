@@ -1,8 +1,17 @@
 class SessionsController < ApplicationController 
-   
+    
+ #controller for logging in users   
+
 def index
     
 end
+
+def new
+    user = User.find_by(id: session[:user_id])
+    if logged_in?
+        redirect_to user_path(user)
+    end
+end 
 
 def create
     user = User.find_by(email: params[:session][:email].downcase)
@@ -13,6 +22,10 @@ def create
         flash.now[:danger] = "Invalid email/password. Please try again."
         render :new
     end 
+end 
+
+
+
 end 
 
 def destroy
