@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+  before_action :logged_in?, only: [:show, :edit, :update, :destroy]
 
   #controller for signing up users
 
@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     end 
 
   def show
-    if logged_in?
-      @user = User.find(params[:user_id])
-      @user.business.build
+    if current_user
+      #@user = User.find(params[:user_id])
+      redirect_to business_path_url
     else 
       redirect_to "/"
     

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController 
-    
+
  #controller for logging in users   
 
 def index
@@ -25,8 +25,6 @@ def create
 end 
 
 
-
-end 
 
 def destroy
     log_out if logged_in?
