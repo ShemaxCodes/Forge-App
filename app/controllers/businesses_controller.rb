@@ -5,6 +5,7 @@ def index
 end 
 
 def new
+    @business = Business.new
     if logged_in?
         render :new 
     else 
@@ -38,6 +39,6 @@ end
 
 private
 def business_params
-    params.require(:business).permit(:title, :city, :state, :user_id, :category_id)
+    params.require(:business).permit(:title, :city, :state, :user_id, :category_id, :description)
 end
 end  
