@@ -2,8 +2,8 @@
 
 <%= @business.title %><br>
 
-<a href="/meals/<%= @meal.id %>/edit"><input type="submit" value="Edit Meal"></a><br><br>
-<form action="/meals/<%= @meal.id %>/delete" method ="POST">
-<input type="submit" value="Delete Meal"><br><br>
+<a href="/businesses/<%= @business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
+<form action="/businesses/<%= @business.id %>/delete" method ="POST">
+<input type="submit" value="Delete Business"><br><br>
 </form>
-<a href="/meals"><input type="submit" value="Back to My Meals"></a>
+<a href="/business"><input type="submit" value="Back to My Collection"></a>

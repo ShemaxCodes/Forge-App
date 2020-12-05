@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in?, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery
+  
   #controller for signing up users
 
   def new 

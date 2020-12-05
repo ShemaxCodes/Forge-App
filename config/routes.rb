@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get "/businesses", to: "businesses#index", as: "business_path"
   get "/businesses/new", to: "businesses#new", as: "new_business_path"
+  post "/businesses/new", to: "businesses#new"
+  get "/businesses/:id", to: "businesses#show", as: "show_business_path"
   get "/signup", to: "users#new", as: 'new_user_path'
 
   resources :users
   resources :categories
+  resources :businesses
 
   get "/users/:id", to: "users#show", as: 'users_path'
   get "/login", to: "sessions#new", as: 'login_path'

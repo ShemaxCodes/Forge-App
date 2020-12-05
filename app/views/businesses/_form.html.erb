@@ -1,6 +1,6 @@
 <!-- form for creating a new business -->
 
-<%= form_for business_path_url do |b| %>
+<%= form_for business_path_url, :url => { :action => "create" } do |b| %>
 <%= b.label :title, "Name of Business"  %>
 <%= b.text_field :title %>
 <br>
