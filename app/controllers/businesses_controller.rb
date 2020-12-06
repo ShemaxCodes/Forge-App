@@ -24,6 +24,7 @@ def create
         redirect_to new_business_path_url
     end
     business = Business.create(business_params)
+    business.save
     redirect_to business_show_path_url(user) 
 end 
 

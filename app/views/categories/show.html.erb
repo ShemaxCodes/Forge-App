@@ -1,0 +1,12 @@
+<h1><%= @category.title %></h1>
+<br>
+<br>
+
+<%= button_to "Edit Category", edit_category_path(@category), method: :get %>
+<% if @category.businesses.any? %>
+        <span>
+            You can't delete because there are tasks associated
+        </span>
+            <% else %>
+                <%= button_to 'Delete Category', category_path(@category), method: :delete %>
+    <% end %>

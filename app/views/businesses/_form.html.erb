@@ -5,7 +5,8 @@
 <%= f.text_field :title %>
 <br>
 <br>
-<%= f.select :category_id, [ 'Apparel', 'Content Creators', 'Floral', 'Tech'], :prompt => 'Select A Category' %>
+<%= f.label :category %>
+<%= f.collection_select :category_id, Category.all, :id, :title %>
 <br>
 <br> 
 <%= f.label :image %>

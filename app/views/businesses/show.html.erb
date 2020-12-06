@@ -4,8 +4,8 @@
 <%= business.title %><br>
 <br>
 
-<a href="/businesses/<%= business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
-<form action="/businesses/<%= business.id %>/delete" method ="POST">
+<a href="/businesses/<%= @business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
+<form action="/businesses/<%= @business.id %>/delete" method ="POST">
 <input type="submit" value="Delete Business"><br><br>
 </form>
 <a href="/businesses/:id"><input type="submit" value="Back to My Collection"></a>
