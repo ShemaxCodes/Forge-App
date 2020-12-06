@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+    before_action :logged_in?, only: [:show, :edit, :update, :destroy]
     protect_from_forgery
     #skip_before_action :verify_authenticity_token
 
@@ -17,13 +18,13 @@ def new
 end 
 
 def create
+    user = current_user
     @business = Business.new(business_params)
-    if @business.save && business_params.empty?
-        redirect_to new_business_path
+    if business_params.empty?
+        redirect_to new_business_path_url
     end
-    @business = Business.create(business_params)
-    @business.save
-    redirect_to business_path 
+    business = Business.create(business_params)
+    redirect_to business_show_path_url(user) 
 end 
 
 
@@ -62,6 +63,6 @@ end
 
 private
 def business_params
-    params.permit(:title, :city, :state, :user_id, :category_id, :description)
+    params.require(:business).permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
 end
 end  

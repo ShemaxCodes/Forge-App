@@ -1,11 +1,11 @@
 <!-- form for creating a new business -->
 
-<%= form_for business_path_url, :url => { :action => "create" } do |f| %>
+<%= form_for [@user, @business] do |f| %>
 <%= f.label :title, "Name of Business"  %>
 <%= f.text_field :title %>
 <br>
 <br>
-<%= f.select :category, [ 'Apparel', 'Content Creators', 'Floral', 'Tech'], :prompt => 'Select A Category' %>
+<%= f.select :category_id, [ 'Apparel', 'Content Creators', 'Floral', 'Tech'], :prompt => 'Select A Category' %>
 <br>
 <br> 
 <%= f.label :image %>
