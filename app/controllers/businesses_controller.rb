@@ -22,18 +22,19 @@ def create
     @business = Business.new(business_params)
     if business_params.empty?
         redirect_to new_business_path_url
-    end
-    business = Business.create(business_params)
-    business.save
-    redirect_to business_show_path_url(user) 
+    else
+        @business.save
+        redirect_to business_show_path_url(user) 
+    end 
 end 
 
 
+
 def show 
-    @businesses = Business.all 
+    @business = Business.new(business_params)
     user = current_user
     if logged_in?
-        @business = Business.find_by(id: session[:user_id])
+        @business= Business.find params[:id]
         render :show
     else 
         redirect_to login_path
@@ -64,6 +65,6 @@ end
 
 private
 def business_params
-    params.require(:business).permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
+    params.permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
 end
 end  

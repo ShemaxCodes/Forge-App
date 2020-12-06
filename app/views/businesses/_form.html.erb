@@ -1,6 +1,6 @@
 <!-- form for creating a new business -->
 
-<%= form_for [@user, @business] do |f| %>
+<%= form_for @business do |f| %>
 <%= f.label :title, "Name of Business"  %>
 <%= f.text_field :title %>
 <br>

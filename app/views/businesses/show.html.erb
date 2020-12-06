@@ -1,7 +1,6 @@
 <h1>show page </h1>
 
-<%= @businesses.each do |business| %>
-<%= business.title %><br>
+<%= @business.title %><br>
 <br>
 
 <a href="/businesses/<%= @business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
@@ -9,5 +8,3 @@
 <input type="submit" value="Delete Business"><br><br>
 </form>
 <a href="/businesses/:id"><input type="submit" value="Back to My Collection"></a>
-
-<% end %>
