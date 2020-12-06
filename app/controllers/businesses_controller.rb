@@ -17,18 +17,21 @@ def new
 end 
 
 def create
-    user = current_user
-    if params[:title].empty? || params[:description].empty?
+    @business = Business.new(business_params)
+    if @business.save && business_params.empty?
         redirect_to new_business_path
     end
-    business = Business.build(business_params)
-    redirect_to business_path #change to collection_path/add business_path to nav bar
+    @business = Business.create(business_params)
+    @business.save
+    redirect_to business_path 
 end 
 
 
 def show 
+    @businesses = Business.all 
+    user = current_user
     if logged_in?
-        @business = Business.find_by_id(params[:id])
+        @business = Business.find_by(id: session[:user_id])
         render :show
     else 
         redirect_to login_path
@@ -37,7 +40,17 @@ end
 
 
 def edit 
-
+    if !logged_in?
+        redirect_to login_path
+    end
+    @business = Business.find_by(id: params[:id])
+        if @business.title !=nil || @business.description !=nil  
+            if current_user.id == @business.user_id 
+                render :edit
+            else 
+                redirect_to new_business_path
+            end 
+        end 
 end 
 
 def update
@@ -49,6 +62,6 @@ end
 
 private
 def business_params
-    params.require(:business).permit(:title, :city, :state, :user_id, :category_id, :description)
+    params.permit(:title, :city, :state, :user_id, :category_id, :description)
 end
 end  
