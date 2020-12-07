@@ -8,9 +8,10 @@ def index
 end 
 
 def new
-    @business = Business.new
     if logged_in?
-        render :new 
+        @user = User.find_by(id: session[:user_id])
+        @business = Business.new
+        #render :new 
     else 
         redirect_to login_path
     end 
@@ -19,22 +20,22 @@ end
 
 def create
     user = current_user
-    @business = Business.new(business_params)
+    @business = Business.create(business_params)
+    user = User.find_by(id: session[:user_id])
     if business_params.empty?
         redirect_to new_business_path_url
     else
-        @business.save
-        redirect_to business_show_path_url(user) 
+        redirect_to business_show_path(user) 
     end 
 end 
 
 
 
 def show 
-    @business = Business.new(business_params)
     user = current_user
+    @business = Business.new(business_params)
     if logged_in?
-        @business= Business.find params[:id]
+        @business = Business.find params[:id]
         render :show
     else 
         redirect_to login_path

@@ -1,6 +1,6 @@
 <!-- form for creating a new business -->
 
-<%= form_for @business do |f| %>
+<%= form_for(@business) do |f| %>
 <%= f.label :title, "Name of Business"  %>
 <%= f.text_field :title %>
 <br>
@@ -25,6 +25,8 @@
 <%= f.text_field :description %>
 <br>
 <br>
+
+
 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <%= f.submit "Forge Business" %>
 
