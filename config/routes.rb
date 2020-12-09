@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :businesses
   resources :categories
   
+  post "/businesses/:id/delete", to: "businesses#destroy"
 
   get "/login", to: "sessions#new", as: 'login_path'
   post "/login", to: "sessions#create"
