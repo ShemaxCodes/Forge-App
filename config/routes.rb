@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get "/businesses", to: "businesses#index", as: "business_path"
   get "/businesses/new", to: "businesses#new", as: "new_business_path"
-  post "/businesses/new", to: "businesses#new"
+  #post "/businesses/new", to: "businesses#new"
   post "/businesses", to: "businesses#create"
   get "/businesses/:id", to: "businesses#show", as: "business_show_path"
   

@@ -20,21 +20,18 @@ end
 
 def create
     @user = User.find_by(id: session[:user_id])
-    @business = Business.create(business_params)
-    if business_params.empty?
-        redirect_to new_business_path_url
-    else
-        redirect_to business_show_path(user) 
-    end 
+    @business = Business.new(business_params)
+    @business.save
+        redirect_to business_path
+    
 end 
 
 
 
 def show 
     user = current_user
-    @business = Business.new(business_params)
     if logged_in?
-        @business = Business.find params[:id]
+        @business = user.business.find_by(id: params[:id])
         render :show
     else 
         redirect_to login_path
