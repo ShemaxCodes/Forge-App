@@ -19,7 +19,7 @@ def new
 end 
 
 def create
-    user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     @business = Business.create(business_params)
     if business_params.empty?
         redirect_to new_business_path_url

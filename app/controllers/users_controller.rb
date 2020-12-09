@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user_id
         #flash[:success] = "Welcome to the Forge App!"
-        redirect_to @user
+        redirect_to login_path
       else 
         render :new 
       end 
