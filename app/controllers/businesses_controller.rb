@@ -21,9 +21,11 @@ end
 def create
     @user = User.find_by(id: session[:user_id])
     @business = Business.new(business_params)
-    @business.save
-        redirect_to business_path
-    
+   if @business.save
+        redirect_to business_path_url
+   else 
+        redirect_to new_business_path_url
+   end 
 end 
 
 
@@ -62,6 +64,6 @@ end
 
 private
 def business_params
-    params.permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
+    params.require(:business).permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
 end
 end  
