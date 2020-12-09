@@ -34,8 +34,7 @@ end
 def show 
 
     if logged_in?
-        user = current_user
-        @business = business.find_by(id: params[:id])
+        @business = Business.find_by(id: params[:id])
         render :show
     else 
         redirect_to login_path
