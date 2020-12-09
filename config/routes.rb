@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users 
   resources :businesses
   resources :categories
+  resources :comments
   
   post "/businesses/:id/delete", to: "businesses#destroy"
 
