@@ -1,6 +1,9 @@
 <h1>Businesses in South Carolina</h1>
 <%= @businesses.each do |business| %>
 <%= business %>
+<%= business.title %><br>
+
 <% end %>
 
-<h3><%= link_to "Add a New Business", new_business_path_url %></h3>
+<h3><%= link_to "Add a New Business", new_business_url %></h3>
+

@@ -19,21 +19,23 @@ def new
 end 
 
 def create
-    @user = User.find_by(id: session[:user_id])
     @business = Business.new(business_params)
+    #binding.pry
    if @business.save
-        redirect_to business_path_url
+    session[:user_id] = @user_id
+        redirect_to business_path
    else 
-        redirect_to new_business_path_url
+        redirect_to new_business_path
    end 
 end 
 
 
 
 def show 
-    user = current_user
+
     if logged_in?
-        @business = user.business.find_by(id: params[:id])
+        user = current_user
+        @business = business.find_by(id: params[:id])
         render :show
     else 
         redirect_to login_path
@@ -64,6 +66,6 @@ end
 
 private
 def business_params
-    params.require(:business).permit(:title, :image, :category, :city, :state, :user_id, :category_id, :description)
+    params.require(:business).permit(:title, :image, :city, :state, :user_id, :category_id, :description)
 end
 end  
