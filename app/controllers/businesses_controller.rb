@@ -19,9 +19,8 @@ def new
 end 
 
 def create
-    user = current_user
-    @business = Business.create(business_params)
     user = User.find_by(id: session[:user_id])
+    @business = Business.create(business_params)
     if business_params.empty?
         redirect_to new_business_path_url
     else

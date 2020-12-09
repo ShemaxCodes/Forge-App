@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user_id
         #flash[:success] = "Welcome to the Forge App!"
-        redirect_to user_path(@user)
+        redirect_to @user
       else 
         render :new 
       end 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      #@user = User.find(params[:user_id])
+      user = User.find(params[:user_id])
       redirect_to business_path_url
     else 
       redirect_to "/"
