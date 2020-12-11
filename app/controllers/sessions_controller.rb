@@ -31,6 +31,17 @@ def destroy
     redirect_to '/'
 end
 
-
-
+def google_login
+    user_email = request.env['omniauth.auth']['info']['email']
+    user_name = request.env['omniauth.auth']['info']['name']
+    @user = User.find_or_create_by(email: user_email) do |user|
+        user.username = user_name 
+        user.password = SecureRandom.hex
+    end 
+        log_in @user
+        redirect_to businesses_path
+    end
+    
 end 
+
+
