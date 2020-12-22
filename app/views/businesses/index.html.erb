@@ -1,8 +1,8 @@
 <h1>Businesses in South Carolina</h1><br>
+<% "Hi" %>
 
 
-
-<%= @businesses.each do |business| %>
+<% @businesses.each do |business| %>
 <a href="/businesses/<%= business.id %>"style="color: black"><%= business.title %> - <%= business.city %>,<%= business.state %></a>
 <% end %>
 <br><br>

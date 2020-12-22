@@ -4,8 +4,9 @@ class BusinessesController < ApplicationController
     #skip_before_action :verify_authenticity_token
 
 def index 
-    if params[:user_id]
-        @businesses = User.find(params[:user_id]).business
+    if current_user
+        #byebug
+        @businesses = current_user.businesses
       else
         @businesses = Business.all
     end
