@@ -17,7 +17,6 @@ def new
     if logged_in?
         @user = User.find_by(id: session[:user_id])
         @business = Business.new
-        #@business
         #render :new 
     else 
         redirect_to login_path, notice: "User not found"
