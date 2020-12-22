@@ -4,19 +4,26 @@ Rails.application.routes.draw do
   
   
   get "/signup", to: "users#new", as: 'new_user_path'
-  
+  get "/login", to: "sessions#new", as: 'login_path'
+  post "/login", to: "sessions#create"
+  delete '/logout', to: "sessions#destroy", as: 'logout_path'
+  get '/logout', to: "sessions#destroy"
+
+  resources :sessions
+
   resources :users 
+  resources :users, only: [:show] do
+    # nested resource for business
+    resources :businesses, only: [:show, :index]
+  end
+
   resources :businesses
   resources :categories
   resources :comments
   
   post "/businesses/:id/delete", to: "businesses#destroy"
 
-  get "/login", to: "sessions#new", as: 'login_path'
-  post "/login", to: "sessions#create"
-  delete '/logout', to: "sessions#destroy", as: 'logout_path'
-  get '/logout', to: "sessions#destroy"
-  resources :sessions
+  
 
   get '/auth/google_oauth2/callback', to: "sessions#google_login"
 

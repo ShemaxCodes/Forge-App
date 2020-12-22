@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base 
 
-    belongs_to :user 
-    belongs_to :businesses
+    belongs_to :user, optional: true  
+    belongs_to :businesses, optional: true 
 
 end 

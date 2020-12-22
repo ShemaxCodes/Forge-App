@@ -4,23 +4,28 @@ class BusinessesController < ApplicationController
     #skip_before_action :verify_authenticity_token
 
 def index 
-    @businesses = Business.all
-end 
+    if params[:user_id]
+        @businesses = User.find(params[:user_id]).business
+      else
+        @businesses = Business.all
+    end
+end
+
 
 def new
     if logged_in?
         @user = User.find_by(id: session[:user_id])
         @business = Business.new
+        #@business
         #render :new 
     else 
-        redirect_to login_path
+        redirect_to login_path, notice: "User not found"
     end 
     #@business = Business.new
 end 
 
 def create
     @business = Business.new(business_params)
-    #binding.pry
    if @business.save
     session[:user_id] = @user_id
         redirect_to businesses_path
@@ -69,6 +74,12 @@ def destroy
 end
 
 private
+
+def find_business
+    @business = Business.where(user_id: params[:user_id])
+end
+
+
 def business_params
     params.require(:business).permit(:title, :image, :city, :state, :user_id, :category_id, :description)
 end

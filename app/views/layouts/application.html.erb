@@ -119,7 +119,7 @@
 	<ul class="navbar-nav">
 		<li class="nav-link"><a href="#">About</a></li>
 		<li class="nav-link"><a href="/categories">Categories</a></li>
-		<li class="nav-link"><a href="/businesses/:id">My Collection</a></li>
+       <li class="nav-link"><%= link_to "My Collection", user_businesses_path(:user_id) %></li>
 	</ul>
 	<ul class="navbar-right">
 		<li class="nav-link"><a href="/signup">Sign Up</a></li>
