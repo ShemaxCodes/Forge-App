@@ -3,9 +3,9 @@
 
 <% @businesses.each do |business| %>
 <!--<a href="/businesses/<%= business.id %>"style="color: black"><%= business.title %> - <%= business.city %>,<%= business.state %></a>-->
-<%= link_to business.title, user_business_path(business.user_id) %>
+<%= link_to business.title, user_business_path(business, @current_user) %>
 <% end %>
 <br><br>
 
-<h3><%= link_to "Add a New Business", new_user_business_path(@current_user) %></h3>
+
 
