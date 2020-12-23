@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :businesses 
   resources :categories
 
-  get 'categories/:category_id/businesses', to: 'businesses#index', as: 'categories_business'
+  #get 'categories/:category_id/businesses', to: 'businesses#index', as: 'categories_business'
   resources :comments
   
   post "/businesses/:id/delete", to: "businesses#destroy"
