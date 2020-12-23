@@ -75,9 +75,7 @@ end
 
 private
 
-def find_business
-    @business = Business.where(user_id: params[:user_id])
-end
+
 
 
 def business_params
