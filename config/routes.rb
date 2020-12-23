@@ -9,25 +9,21 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy", as: 'logout_path'
   get '/logout', to: "sessions#destroy"
 
-  resources :sessions
 
   resources :users 
-  resources :users, only: [:new, :show] do
+
+  resources :users, only: [:show] do
     # nested resource for business
-    resources :businesses, only: [:show, :index]
+    resources :businesses, only: [:show, :new, :index, :create]
   end
 
-  
-
-  resources :businesses 
+  resources :businesses, only: [:index]
   resources :categories
 
   #get 'categories/:category_id/businesses', to: 'businesses#index', as: 'categories_business'
   resources :comments
   
   post "/businesses/:id/delete", to: "businesses#destroy"
-
-  
 
   get '/auth/google_oauth2/callback', to: "sessions#google_login"
 

@@ -1,15 +1,17 @@
 class BusinessesController < ApplicationController
-    before_action :logged_in?, only: [:show, :edit, :update, :destroy]
+    #before_action :logged_in?, only: [:show, :edit, :update, :destroy]
+    before_action :current_user, only: [:show, :index]
     protect_from_forgery
     #skip_before_action :verify_authenticity_token
 
 def index 
     if current_user
-        #byebug
+        
         @businesses = current_user.businesses
       else
         @businesses = Business.all
     end
+    byebug
 end
 
 
@@ -21,16 +23,18 @@ def new
     else 
         redirect_to login_path, notice: "User not found"
     end 
+    #byebug
     #@business = Business.new
 end 
 
 def create
     @business = Business.new(business_params)
+    
    if @business.save
     session[:user_id] = @user_id
-        redirect_to businesses_path
+        redirect_to user_businesses_path
    else 
-        redirect_to new_business_path
+        redirect_to new_user_business_path
    end 
 end 
 
@@ -41,9 +45,11 @@ def show
     if logged_in?
         @business = Business.find_by(id: params[:id])
         render :show
+        
     else 
         redirect_to login_path
     end
+    byebug
 end 
 
 
