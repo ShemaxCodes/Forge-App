@@ -1,11 +1,12 @@
 
 
 
-<% @current_user.businesses.each do |b| %>
-<h1><%= b.title %></h1><br>
-<%= b.description %>
+
+<h1><%= @business.title %></h1><br>
+<%= @business.description %>
+
 <br>
 
-<% end %>
 <%= link_to "Add Comment", new_comment_path %><br>
 <%= link_to "Edit Business", edit_user_business_path %><br>
+

@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
     #before_action :logged_in?, only: [:show, :edit, :update, :destroy]
-    before_action :current_user, only: [:show, :index, :new, :create]
+    before_action :current_user, only: [:show, :index, :new, :create, :edit]
     protect_from_forgery
     #skip_before_action :verify_authenticity_token
 
@@ -42,7 +42,8 @@ end
 def show 
 
     if current_user
-        @business = current_user.businesses.find_by(id: params[:id])
+        #byebug
+        @business = @current_user.businesses.find(id: params[:id])
         render :show
         
     else 
@@ -56,7 +57,7 @@ def edit
     if !logged_in?
         redirect_to login_path
     end
-    @business = Business.find_by(id: params[:id])
+    @business = Business.find_by(user_id: params[:user_id])
         if @business.title != nil || @business.description != nil 
                 render :edit
             else 
