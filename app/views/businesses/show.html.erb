@@ -1,13 +1,11 @@
 
-<h1><%= @business.title %></h1><br>
-<%= @business.description %>
+
+
+<% @current_user.businesses.each do |b| %>
+<h1><%= b.title %></h1><br>
+<%= b.description %>
 <br>
 
-
+<% end %>
 <%= link_to "Add Comment", new_comment_path %><br>
-<a href="/businesses/<%= @business.id %>/edit"><input type="submit" value="Edit Business"></a><br><br>
-<form action="/businesses/<%= @business.id %>/delete" method ="POST">
-<input type="submit" value="Delete Business"><br><br>
-</form>
-<a href="/businesses/:id"><input type="submit" value="Back to My Collection"></a>
-
+<%= link_to "Edit Business", edit_user_business_path %><br>

@@ -48,7 +48,7 @@ def show
     else 
         redirect_to login_path
     end
-    byebug
+    #byebug
 end 
 
 
@@ -60,7 +60,7 @@ def edit
         if @business.title != nil || @business.description != nil 
                 render :edit
             else 
-                redirect_to new_business_path
+                redirect_to new_user_business_path
             end 
         
 end 
@@ -69,13 +69,13 @@ def update
     business = Business.find_by(id: params[:id])
     business.update(business_params)
     business.save
-    redirect_to businesses_path
+    redirect_to user_businesses_path
 end 
 
 def destroy
     @business = Business.find_by(id: params[:id])
     @business.destroy
-    redirect_to businesses_path
+    redirect_to user_businesses_path
 end
 
 private
