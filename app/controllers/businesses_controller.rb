@@ -43,7 +43,7 @@ def show
 
     if current_user
         #byebug
-        @business = @current_user.businesses.find(id: params[:id])
+        @business = @current_user.businesses.find_by(id: params[:id])
         render :show
         
     else 
