@@ -40,15 +40,10 @@ end
 
 
 def show 
-
-    if current_user
+    #byebug 
+    @business = current_user.businesses.find_by(user_id: params[:id], id: params[:user_id])
         #byebug
-        @business = @current_user.businesses.find_by(id: params[:id])
         render :show
-        
-    else 
-        redirect_to login_path
-    end
     #byebug
 end 
 
@@ -57,13 +52,13 @@ def edit
     if !logged_in?
         redirect_to login_path
     end
-    @business = Business.find_by(user_id: params[:user_id])
+    @business = current_user.businesses.find_by(user_id: params[:id], id: params[:user_id])
         if @business.title != nil || @business.description != nil 
                 render :edit
             else 
                 redirect_to new_user_business_path
             end 
-        
+         
 end 
 
 def update
@@ -87,4 +82,4 @@ private
 def business_params
     params.require(:business).permit(:title, :image, :city, :state, :user_id, :category_id, :description)
 end
-end  
+end
