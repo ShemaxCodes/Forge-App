@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     # nested resource for business
-    resources :businesses, only: [:show, :new, :index, :create, :edit]
+    resources :businesses, only: [:show, :new, :index, :create, :edit, :update]
   end
 
   resources :businesses, only: [:index]
